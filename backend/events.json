@@ -1,0 +1,39 @@
+{
+  "events": [
+    {
+      "title": "Tech Conference 2026",
+      "image": "https://nlplatform.com/sites/default/files/styles/article_big__nlplatform_desktop/public/2026-02/SODT_Rachel%20Eccelestone_2.png?h=a411d77e&itok=Hm_YSUFL",
+      "date": "2026-11-15",
+      "description": "Annual technology conference featuring speakers from leading tech companies.",
+      "id": "7f3a9c21-6d84-4b17-a5e2-91c8f04d7326"
+    },
+    {
+      "title": "Music Festival Summer",
+      "image": "https://faroutmagazine.co.uk/static/uploads/1/2025/05/The-Mighty-Hoopla-Festival-London-Brockwell-Park-2025-Far-Out-Magazine-1140x855.jpg",
+      "date": "2026-08-20",
+      "description": "Three-day music festival with local and international artists.",
+      "id": "c2e81f64-3b59-47a0-9d26-58f14a7be903"
+    },
+    {
+      "title": "Art Exhibition: Modern Visions",
+      "image": "https://cloudfront-us-east-1.images.arcpublishing.com/bostonglobe/XZXB72NYDBO77PEN34MDLDI3PM.JPG",
+      "date": "2026-12-01",
+      "description": "Showcase of contemporary art from emerging artists.",
+      "id": "a94d27e8-51c3-4f6b-b802-73d9e15c4681"
+    },
+    {
+      "title": "Marathon for Charity",
+      "image": "https://assets.thebraintumourcharity.org/live/uploads/2024/07/ADS_3037-1568x1045.jpg",
+      "date": "2026-10-30",
+      "description": "Run to support local charities. 5K, 10K, and half-marathon options.",
+      "id": "e6b13f52-8a47-4c91-bd35-62f709ae184d"
+    },
+    {
+      "title": "Food & Wine Gala",
+      "image": "https://www.dine-shine.ch/fileadmin/_processed_/c/e/csm_995x666_04_dine-shine_Eventkonzepte_Thon_Teller_23003efcdf.jpg",
+      "date": "2026-11-20",
+      "description": "Evening of gourmet food tasting and fine wines.",
+      "id": "35d8a702-f194-46ce-87b5-c9214a6e0f38"
+    }
+  ]
+}
