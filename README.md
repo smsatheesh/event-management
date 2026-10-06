@@ -13,6 +13,8 @@ A full-stack events management application built with a Node.js/Express backend 
 - Client-side routing with React Router
 - State management with React hooks (useState, useEffect, etc.)
 - RESTful API backend
+- User authentication (signup, login, logout)
+- Newsletter subscription
 
 ## Architecture
 
@@ -26,19 +28,24 @@ The application follows a client-server architecture:
 ### Backend (`backend/`)
 
 - `app.js`: Entry point of the Express application.
-- `routes/events.js`: Defines API endpoints for events (GET, POST, PUT, DELETE).
-- `data/event.js`: Contains the Event model or data structure (if using a database, this might be replaced; currently using in-memory or JSON file).
+- `routes/auth.js`: Defines API endpoints for user authentication (signup, login).
+- `routes/events.js`: Defines API endpoints for events (GET, POST, PUT, DELETE), protected by authentication middleware.
+- `data/event.js`: Contains the Event model or data structure.
+- `data/user.js`: Contains the User model or data structure.
+- `data/util.js`: Utility functions for data operations.
+- `util/auth.js`: Authentication utilities (token creation, verification).
 - `util/errors.js`: Custom error handling utilities.
-- `util/validation.js`: Input validation functions for event data.
-- `events.json`: JSON file used as a simple data store (for development).
+- `util/validation.js`: Input validation functions for event and user data.
+- `events.json`: JSON file used as a simple data store for events (for development).
 
 ### Frontend (`frontend/`)
 
-- `src/pages`: Contains page components for different routes (Home, Events, Event Detail, New Event, Edit Event, etc.).
-- `src/components`: Reusable UI components (EventForm, EventItem, EventsList, Navigation, etc.).
+- `src/pages`: Contains page components for different routes (Home, Events, Event Detail, New Event, Edit Event, Authentication, Logout, Newsletter, etc.).
+- `src/components`: Reusable UI components (AuthForm, EventForm, EventItem, EventsList, EventsNavigation, MainNavigation, NewsletterSignup, PageContent, etc.).
 - `src/index.js`: Entry point of the React application.
 - Uses `react-router-dom` for client-side routing.
 - Uses React hooks for state and side effects.
+- Implements protected routes for event management (requires authentication).
 
 ## Technology Stack
 
@@ -95,8 +102,13 @@ The application follows a client-server architecture:
 
 ## API Endpoints
 
-The backend provides the following RESTful API endpoints under `/api/events`:
+The backend provides the following RESTful API endpoints:
 
+### Authentication
+- `POST /api/auth/signup` - Create a new user account
+- `POST /api/auth/login` - Authenticate a user and get a token
+
+### Events (protected, require authentication)
 - `GET /api/events` - Retrieve all events
 - `GET /api/events/:id` - Retrieve a specific event by ID
 - `POST /api/events` - Create a new event
@@ -122,10 +134,14 @@ events-management/
 │   ├── app.js
 │   ├── package.json
 │   ├── routes/
+│   │   ├── auth.js
 │   │   └── events.js
 │   ├── data/
-│   │   └── event.js
+│   │   ├── event.js
+│   │   ├── user.js
+│   │   └── util.js
 │   ├── util/
+│   │   ├── auth.js
 │   │   ├── errors.js
 │   │   └── validation.js
 │   └── events.json
@@ -138,21 +154,34 @@ events-management/
 │   │   ├── index.js
 │   │   ├── index.css
 │   │   ├── components/
+│   │   │   ├── AuthForm.js
+│   │   │   ├── AuthForm.module.css
 │   │   │   ├── EventForm.js
+│   │   │   ├── EventForm.module.css
 │   │   │   ├── EventItem.js
+│   │   │   ├── EventItem.module.css
 │   │   │   ├── EventsList.js
-│   │   │   ├── Navigation components...
-│   │   │   └── ... (with corresponding CSS modules)
+│   │   │   ├── EventsList.module.css
+│   │   │   ├── EventsNavigation.js
+│   │   │   ├── EventsNavigation.module.css
+│   │   │   ├── MainNavigation.js
+│   │   │   ├── MainNavigation.module.css
+│   │   │   ├── NewsletterSignup.js
+│   │   │   ├── NewsletterSignup.module.css
+│   │   │   ├── PageContent.js
+│   │   │   └── PageContent.module.css
 │   │   └── pages/
-│   │       ├── HomePage.js
-│   │       ├── EventsPage.js
-│   │       ├── EventDetailPage.js
-│   │       ├── NewEventPage.js
-│   │       ├── EditEventPage.js
-│   │       ├── Newsletter.js
+│   │       ├── Authentication.js
+│   │       ├── EditEvent.js
 │   │       ├── Error.js
-│   │       ├── NotFound.js
-│   │       └── Layout components...
+│   │       ├── EventDetail.js
+│   │       ├── Events.js
+│   │       ├── EventsRoot.js
+│   │       ├── Home.js
+│   │       ├── Logout.js
+│   │       ├── NewEvent.js
+│   │       ├── Newsletter.js
+│   │       └── Root.js
 │   └── public/
 │       ├── index.html
 │       ├── manifest.json
